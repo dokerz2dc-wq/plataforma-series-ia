@@ -21,7 +21,7 @@ const CONFIG = {
   // Contacto del botón "Sube tu serie"
   contacto: {
     correo: "dokerz2dc@gmail.com",
-    whatsapp: "",            // <-- PENDIENTE: número con indicativo, ej. "573001234567" (sin + ni espacios)
+    whatsapp: "573015281043",   // número con indicativo (sin + ni espacios)
     asunto: "Quiero subir mi serie a Series IA",
     mensaje: "Hola, quiero subir mi serie hecha con IA a Series IA. Te cuento de qué se trata:"
   }
