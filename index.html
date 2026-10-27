@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Series IA — Series hechas con inteligencia artificial</title>
+<meta name="description" content="Series IA: catálogo de series creadas con inteligencia artificial por autores independientes.">
+<meta name="theme-color" content="#08080c">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23e50914'/><text x='50' y='70' font-size='58' font-family='Arial' font-weight='bold' fill='%23fff' text-anchor='middle'>S</text></svg>">
+<link rel="preconnect" href="https://www.youtube-nocookie.com">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<a class="saltar" href="#catalogo">Saltar al catálogo</a>
+
+<header class="cabecera" id="cabecera">
+  <div class="cabecera__in">
+    <a class="logo" href="#" aria-label="Series IA, inicio">
+      <span class="logo__s">SERIES</span><span class="logo__ia">IA</span>
+    </a>
+
+    <nav class="nav" aria-label="Secciones">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#autores">Autores</a>
+    </nav>
+
+    <div class="cabecera__der">
+      <div class="buscador" role="search">
+        <svg class="buscador__icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 1 0 4.9 14.32l5.39 5.39 1.42-1.42-5.39-5.39A8 8 0 0 0 10 2zm0 2a6 6 0 1 1 0 12 6 6 0 0 1 0-12z"/></svg>
+        <input id="busqueda" type="search" placeholder="Buscar serie o autor" aria-label="Buscar por nombre de serie o de autor" autocomplete="off">
+        <button class="buscador__limpiar" id="limpiarBusqueda" type="button" aria-label="Limpiar búsqueda" hidden>&times;</button>
+      </div>
+      <button class="btn btn--sube" id="btnSubeCabecera" type="button">Sube tu serie</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- BANNER PRINCIPAL -->
+  <section class="hero" id="hero" aria-label="Serie destacada">
+    <div class="hero__fondo" id="heroFondo" aria-hidden="true"></div>
+    <div class="hero__velo" aria-hidden="true"></div>
+    <div class="hero__in">
+      <div class="hero__texto">
+        <p class="hero__kicker" id="heroKicker">Serie destacada</p>
+        <h1 class="hero__titulo" id="heroTitulo"></h1>
+        <p class="hero__meta" id="heroMeta"></p>
+        <p class="hero__sinopsis" id="heroSinopsis"></p>
+        <div class="hero__botones">
+          <button class="btn btn--play" id="heroVer" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg> Ver ahora
+          </button>
+          <button class="btn btn--ghost" id="heroInfo" type="button">Más información</button>
+        </div>
+      </div>
+      <div class="hero__reel" id="heroReel" aria-label="Adelanto vertical"></div>
+    </div>
+  </section>
+
+  <!-- RESULTADOS DE BÚSQUEDA -->
+  <section class="resultados" id="resultados" hidden aria-live="polite">
+    <h2 class="fila__titulo" id="resultadosTitulo"></h2>
+    <div class="rejilla" id="resultadosRejilla"></div>
+  </section>
+
+  <!-- FILAS DEL CATÁLOGO -->
+  <div id="catalogo" class="catalogo"></div>
+
+  <!-- AUTORES -->
+  <section class="autores" id="autores">
+    <h2 class="fila__titulo">Autores</h2>
+    <p class="autores__intro">Cada serie de este catálogo es de un autor independiente. Síguelos en sus redes.</p>
+    <div class="autores__rejilla" id="autoresRejilla"></div>
+  </section>
+
+  <!-- LLAMADO FINAL -->
+  <section class="cta">
+    <h2>¿Tienes una serie hecha con IA?</h2>
+    <p>Publícala gratis en Series IA. Escríbeme y la subo al catálogo con tus redes.</p>
+    <div class="cta__botones" id="ctaBotones"></div>
+  </section>
+</main>
+
+<footer class="pie">
+  <p><strong>Series IA</strong> — versión de prueba. Los videos se reproducen desde YouTube e Instagram; los derechos son de cada autor.</p>
+  <p class="pie__tenue">Hecho con HTML, CSS y JavaScript. Sin base de datos.</p>
+</footer>
+
+<!-- MODAL DE SERIE -->
+<div class="modal" id="modal" hidden>
+  <div class="modal__fondo" id="modalFondo"></div>
+  <div class="modal__caja" role="dialog" aria-modal="true" aria-labelledby="modalTitulo" tabindex="-1" id="modalCaja">
+    <button class="modal__cerrar" id="modalCerrar" type="button" aria-label="Cerrar">&times;</button>
+    <div class="modal__reproductor" id="modalReproductor"></div>
+    <div class="modal__cuerpo">
+      <span class="chip" id="modalEstado" hidden></span>
+      <h2 id="modalTitulo"></h2>
+      <p class="modal__meta" id="modalMeta"></p>
+      <p class="modal__sinopsis" id="modalSinopsis"></p>
+
+      <div class="autor-tarjeta" id="modalAutor"></div>
+
+      <h3 class="modal__h3" id="modalEpisodiosTitulo">Episodios</h3>
+      <ol class="episodios" id="modalEpisodios"></ol>
+    </div>
+  </div>
+</div>
+
+<script src="datos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
