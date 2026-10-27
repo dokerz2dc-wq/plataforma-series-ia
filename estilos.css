@@ -411,6 +411,12 @@ body.sin-scroll{ overflow:hidden }
 }
 .hero__reel iframe ~ .reel-cargando, .reel-marco:has(iframe) .reel-cargando{ display:none }
 
+/* aviso si el reel no termina de cargar */
+.reel-aviso{
+  padding:18px; text-align:center; background:var(--fondo-3); border-top:1px solid var(--borde);
+}
+.reel-aviso p{ margin:0 0 12px; font-size:.86rem; color:var(--texto-tenue) }
+
 /* aviso cuando YouTube bloquea la insercion de un video */
 .aviso-yt{
   margin:0; padding:10px 16px; font-size:.82rem; line-height:1.5;

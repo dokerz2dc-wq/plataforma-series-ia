@@ -123,22 +123,32 @@ ${capaTexto}
   function procesarIG(contenedor) {
     cargarIG();
     let intentos = 0;
+    const quitar = (sel) => { const e = contenedor.querySelector(sel); if (e) e.remove(); };
     const t = setInterval(() => {
       intentos++;
       if (window.instgrm && window.instgrm.embeds) { window.instgrm.embeds.process(); }
-      const listo = contenedor.querySelector("iframe");
-      if (listo || intentos > 14) {
+      if (contenedor.querySelector("iframe")) {        // el reel ya cargo
         clearInterval(t);
-        if (!listo) {
-          const bq = contenedor.querySelector(".instagram-media");
-          const url = bq ? bq.getAttribute("data-instgrm-permalink") : "#";
-          contenedor.innerHTML =
-            `<div class="reel-alterno"><p>El reel no se pudo cargar aquí (Instagram a veces bloquea la inserción). Ábrelo directamente:</p>
-             <a class="btn btn--sube" href="${esc(url)}" target="_blank" rel="noopener">Ver el reel en Instagram</a></div>`;
-        }
+        quitar(".reel-cargando");
+        quitar(".reel-aviso");
+        return;
       }
-    }, 400);
+      if (intentos > 34) {                             // ~17 s sin cargar
+        clearInterval(t);
+        quitar(".reel-cargando");
+        if (contenedor.querySelector(".reel-aviso")) return;
+        const bq = contenedor.querySelector(".instagram-media");
+        const url = bq ? bq.getAttribute("data-instgrm-permalink") : "#";
+        const aviso = document.createElement("div");
+        aviso.className = "reel-aviso";
+        aviso.innerHTML =
+          `<p>El reel está tardando en cargar. Si no aparece, ábrelo directamente:</p>
+           <a class="btn btn--sube" href="${esc(url)}" target="_blank" rel="noopener">Ver el reel en Instagram</a>`;
+        contenedor.appendChild(aviso);
+      }
+    }, 500);
   }
+
   function blockquoteIG(url) {
     const u = urlInstagram(url);
     return `<blockquote class="instagram-media" data-instgrm-permalink="${esc(u)}?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;margin:0;max-width:540px;min-width:0;padding:0;width:100%"></blockquote>`;
