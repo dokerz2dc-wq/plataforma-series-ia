@@ -126,7 +126,8 @@ ${capaTexto}
     const quitar = (sel) => { const e = contenedor.querySelector(sel); if (e) e.remove(); };
     const t = setInterval(() => {
       intentos++;
-      if (window.instgrm && window.instgrm.embeds) { window.instgrm.embeds.process(); }
+      const ig = window.instgrm && (window.instgrm.Embeds || window.instgrm.embeds);
+      if (ig && ig.process) { ig.process(); }
       if (contenedor.querySelector("iframe")) {        // el reel ya cargo
         clearInterval(t);
         quitar(".reel-cargando");
