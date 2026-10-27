@@ -410,3 +410,11 @@ body.sin-scroll{ overflow:hidden }
   background:linear-gradient(160deg,rgba(124,92,255,.18),rgba(40,217,210,.10));
 }
 .hero__reel iframe ~ .reel-cargando, .reel-marco:has(iframe) .reel-cargando{ display:none }
+
+/* aviso cuando YouTube bloquea la insercion de un video */
+.aviso-yt{
+  margin:0; padding:10px 16px; font-size:.82rem; line-height:1.5;
+  color:var(--texto-tenue); background:var(--fondo-3);
+  border-top:1px solid var(--borde);
+}
+.aviso-yt a{ color:var(--cian); font-weight:600; text-decoration:underline }

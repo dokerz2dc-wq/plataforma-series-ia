@@ -324,7 +324,9 @@ ${capaTexto}
         src="https://www.youtube-nocookie.com/embed/${esc(id)}?rel=0&amp;modestbranding=1&amp;playsinline=1"
         title="${esc(ep.titulo)}" loading="lazy" allowfullscreen
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`;
+        referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <p class="aviso-yt">¿El video no carga aquí? Algunos videos de YouTube tienen la inserción bloqueada por derechos de música.
+        <a href="https://www.youtube.com/watch?v=${esc(id)}" target="_blank" rel="noopener">Ábrelo en YouTube</a>.</p>`;
     }
     $$("#modalEpisodios .episodio").forEach((b, k) => b.classList.toggle("activo", k === i));
   }
